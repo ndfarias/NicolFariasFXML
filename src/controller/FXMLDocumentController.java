@@ -108,6 +108,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Button advancedButton;
+    
+    private Button showDetails;
 
     private ObservableList<Accountmodel> accountData;
 
@@ -371,14 +373,14 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    void actionShowDetails(ActionEvent event) throws IOException {
+    void showDetailAction(ActionEvent event) throws IOException {
         System.out.println("Clicked");
 
         // pass currently selected model
         Accountmodel selectedAccount = accountModel.getSelectionModel().getSelectedItem();
 
         // fxml loader
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLDocument.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
 
         // load the ui elements
         Parent detailedModelView = loader.load();
@@ -406,7 +408,7 @@ public class FXMLDocumentController implements Initializable {
         Accountmodel selectedStudent = accountModel.getSelectionModel().getSelectedItem();
 
         // fxml loader
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailModelView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
 
         // load the ui elements
         Parent detailedModelView = loader.load();

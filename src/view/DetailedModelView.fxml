@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DetailModelController">
+   <children>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
+      <Label layoutX="80.0" layoutY="10.0" text="Detailed Model View">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="108.0" text="Account ID:" />
+      <Label layoutX="17.0" layoutY="145.0" text="Account Name:" />
+      <Label fx:id="labelID" layoutX="134.0" layoutY="108.0" text="Label" />
+      <Label fx:id="labelValue" layoutX="134.0" layoutY="145.0" text="Label" />
+      <Label layoutX="19.0" layoutY="183.0" text="Account Email:" />
+      <Label layoutX="51.0" layoutY="225.0" text="Member:" />
+      <Label fx:id="labelEmail" layoutX="134.0" layoutY="183.0" text="Label" />
+      <Label fx:id="labelMember" layoutX="134.0" layoutY="225.0" text="Label" />
+      <ImageView fx:id="image" fitHeight="209.0" fitWidth="266.0" layoutX="320.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
