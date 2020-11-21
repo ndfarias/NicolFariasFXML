@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="246.0" prefWidth="447.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.FXMLDocumentController"> 
+    <children>
+        <Button fx:id="button" layoutX="183.0" layoutY="131.0" onAction="#handleButtonAction" text="Click Me!" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Button fx:id="buttonCreateAccount" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#createAccount" text="Create Account" />
+      <Button fx:id="buttonReadAccounts" layoutX="310.0" layoutY="21.0" mnemonicParsing="false" onAction="#readAccounts" text="Read Accounts" />
+      <Button fx:id="buttonUpdateAccount" layoutX="14.0" layoutY="201.0" mnemonicParsing="false" onAction="#updateAccount" text="Update Account" />
+      <Button fx:id="buttonDeleteAccount" layoutX="308.0" layoutY="193.0" mnemonicParsing="false" onAction="#deleteAccount" text="Delete Account" />
+      <Button fx:id="buttonNameAndEmail" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" onAction="#readByNameAndEmail" text="Find by Name and Email" />
+      <Button fx:id="buttonReadEmail" layoutX="250.0" layoutY="84.0" mnemonicParsing="false" onAction="#readByEmailContaining" text="Find by Email Containing" />
+    </children>
+</AnchorPane>
