@@ -27,7 +27,7 @@
             <TableColumn fx:id="ismember" prefWidth="95.0" text="Is Member" />
         </columns>
       </TableView>
-      <Line endX="373.0" layoutX="78.0" layoutY="246.0" startX="-100.0" />
+      <Line endX="405.0" layoutX="78.0" layoutY="246.0" startX="-100.0" />
       <Label layoutX="14.0" layoutY="254.0" text="Search Accounts">
          <font>
             <Font size="24.0" />
