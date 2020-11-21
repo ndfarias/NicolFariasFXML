@@ -43,6 +43,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
 
+    //action for "Click Me!" button
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -67,6 +68,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     //the following code is from scene builder skeleton
+    
+    //variables
     @FXML
     private Button buttonCreateAccount;
 
@@ -109,11 +112,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button advancedButton;
     
-    private Button showDetails;
+    private Button showDetailsButton;
+    
+    private Button showDetailsInPlaceButton;
 
     private ObservableList<Accountmodel> accountData;
 
     // The following code has been copied and modified from the demo project
+    
+    //action for button to create an account
     @FXML
     void createAccount(ActionEvent event) {
         Scanner scn = new Scanner(System.in);
@@ -144,6 +151,7 @@ public class FXMLDocumentController implements Initializable {
         create(account);
     }
 
+    //action for button to delete the accounts
     @FXML
     void deleteAccount(ActionEvent event) {
         Scanner scn = new Scanner(System.in);
@@ -162,6 +170,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    //action for button to read the accounts
     @FXML
     void readAccounts(ActionEvent event) {
         //read all
@@ -169,6 +178,7 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    //action for button to update account
     @FXML
     void updateAccount(ActionEvent event) {
         Scanner scn = new Scanner(System.in);
@@ -198,7 +208,7 @@ public class FXMLDocumentController implements Initializable {
         update(account);
     }
 
-    //new custom-named queries
+    //method to read the accounts based on name and email
     @FXML
     void readByNameAndEmail(ActionEvent e) {
         Scanner scn = new Scanner(System.in);
@@ -226,6 +236,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     //CRUD Operations based on demo project and modified for this instance
+    
+    //method to create an account 
     public void create(Accountmodel account) {
         try {
             manager.getTransaction().begin();
@@ -244,6 +256,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    //method to read the accounts on the table
     public List<Accountmodel> readAll() {
         Query query = manager.createNamedQuery("Accountmodel.findAll");
         List<Accountmodel> accounts = query.getResultList();
@@ -255,7 +268,7 @@ public class FXMLDocumentController implements Initializable {
         return accounts;
     }
 
-    // Update operation
+    // method to update an account in the table
     public void update(Accountmodel model) {
         try {
 
@@ -276,6 +289,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    //method to delete an account from the table
     public void delete(Accountmodel account) {
         try {
             Accountmodel existingAccount = manager.find(Accountmodel.class, account.getAccountid());
@@ -294,6 +308,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    //this method finds an account based on both name and email
     public List<Accountmodel> readByNameEmail(String n, String e) {
         Query q = manager.createNamedQuery("Accountmodel.findByNameAndEmail");
 
@@ -307,6 +322,7 @@ public class FXMLDocumentController implements Initializable {
         return accounts;
     }
 
+    //this method finds an account based on any characters in the email
     public List<Accountmodel> readByEmailContains(String e) {
         Query q = manager.createNamedQuery("Accountmodel.findByAccountEmailContaining");
 
@@ -320,6 +336,7 @@ public class FXMLDocumentController implements Initializable {
         return accounts;
     }
 
+    //this method finds an account based on email
     public List<Accountmodel> readByEmail(String e) {
         Query q = manager.createNamedQuery("Accountmodel.findByAccountemail");
 
@@ -332,6 +349,7 @@ public class FXMLDocumentController implements Initializable {
         return accounts;
     }
 
+    //action for search button. searches for account based on email
     @FXML
     void searchAccount(ActionEvent event) {
         System.out.println("Clicked");
@@ -340,6 +358,7 @@ public class FXMLDocumentController implements Initializable {
 
         List<Accountmodel> accounts = readByEmail(email);
 
+        //alert pops up if search comes up blank
         if (accounts == null || accounts.isEmpty()) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information");
@@ -351,6 +370,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     
+    //action for advanced search button. searches for account based on any words in the email
     @FXML
     void advancedAccount(ActionEvent event) {
         System.out.println("Clicked");
@@ -359,6 +379,7 @@ public class FXMLDocumentController implements Initializable {
 
         List<Accountmodel> accounts = readByEmailContains(email);
 
+        //alert pops up if search comes up blank
         if (accounts == null || accounts.isEmpty()) {
 
             Alert alert = new Alert(AlertType.INFORMATION);
@@ -371,76 +392,59 @@ public class FXMLDocumentController implements Initializable {
         }
 
     }
-
+    
+    //show details button action
     @FXML
     void showDetailAction(ActionEvent event) throws IOException {
         System.out.println("Clicked");
+        
+        Accountmodel selectAccount = accountModel.getSelectionModel().getSelectedItem();
 
-        // pass currently selected model
-        Accountmodel selectedAccount = accountModel.getSelectionModel().getSelectedItem();
-
-        // fxml loader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
 
-        // load the ui elements
-        Parent detailedModelView = loader.load();
+        Parent detailModelView = loader.load();
+        Scene tableView = new Scene(detailModelView);
+        DetailModelController detailControlled = loader.getController();
 
-        // load the scene
-        Scene tableViewScene = new Scene(detailedModelView);
+        detailControlled.initData(selectAccount);
 
-        //access the detailedControlled and call a method
-        DetailModelController detailedControlled = loader.getController();
-
-        detailedControlled.initData(selectedAccount);
-
-        // create a new state
         Stage stage = new Stage();
-        stage.setScene(tableViewScene);
+        stage.setScene(tableView);
         stage.show();
 
     }
 
+    // show details in place button action
     @FXML
-    void actionShowDetailsInPlace(ActionEvent event) throws IOException {
+    void showDetailsInPlace(ActionEvent event) throws IOException {
         System.out.println("Clicked");
 
-        // pass currently selected model
-        Accountmodel selectedStudent = accountModel.getSelectionModel().getSelectedItem();
+    
+        Accountmodel selectAccount = accountModel.getSelectionModel().getSelectedItem();
 
-        // fxml loader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DetailedModelView.fxml"));
 
-        // load the ui elements
-        Parent detailedModelView = loader.load();
+        Parent detailModelView = loader.load();
+        Scene tableView = new Scene(detailModelView);
+        DetailModelController detailControlled = loader.getController();
 
-        // load the scene
-        Scene tableViewScene = new Scene(detailedModelView);
+        detailControlled.initData(selectAccount);
 
-        //access the detailedControlled and call a method
-        DetailModelController detailedControlled = loader.getController();
-
-        detailedControlled.initData(selectedStudent);
-
-        // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
-        detailedControlled.setPreviousScene(currentScene);
-
-        //This line gets the Stage information
+        detailControlled.setPreviousScene(currentScene);
+        
         Stage stage = (Stage) currentScene.getWindow();
 
-        stage.setScene(tableViewScene);
+        stage.setScene(tableView);
         stage.show();
     }
 
     //data to table
     public void setTableData(List<Accountmodel> accountList) {
-
         accountData = FXCollections.observableArrayList();
 
-        accountList.forEach(a -> {
-            accountData.add(a);
-        });
-
+        accountList.forEach(a -> { accountData.add(a);});
+        
         accountModel.setItems(accountData);
         accountModel.refresh();
     }

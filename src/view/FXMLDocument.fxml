@@ -36,7 +36,8 @@
       <TextField fx:id="emailField" layoutX="130.0" layoutY="314.0" />
       <Button fx:id="searchButton" layoutX="337.0" layoutY="299.0" mnemonicParsing="false" onAction="#searchAccount" text="Search" />
       <Button fx:id="advancedButton" layoutX="335.0" layoutY="340.0" mnemonicParsing="false" onAction="#advancedAccount" text="Advanced Search" />
-      <Button fx:id="showDetails" layoutX="350.0" layoutY="668.0" mnemonicParsing="false" onAction="#showDetailAction" text="Show Details" />
+      <Button fx:id="showDetailsButton" layoutX="350.0" layoutY="668.0" mnemonicParsing="false" onAction="#showDetailAction" text="Show Details" />
       <Label fx:id="label" layoutX="168.0" layoutY="157.0" prefHeight="21.0" prefWidth="113.0" />
+      <Button fx:id="showDetailsInPlaceButton" layoutX="169.0" layoutY="668.0" mnemonicParsing="false" onAction="#showDetailsInPlace" text="Show Details In-Place" />
     </children>
 </AnchorPane>
