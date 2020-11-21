@@ -105,6 +105,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button searchButton;
+    
+    @FXML
+    private Button advancedButton;
 
     private ObservableList<Accountmodel> accountData;
 
@@ -328,7 +331,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    void searchStudent(ActionEvent event) {
+    void searchAccount(ActionEvent event) {
         System.out.println("Clicked");
 
         String email = emailField.getText();
@@ -338,12 +341,33 @@ public class FXMLDocumentController implements Initializable {
         if (accounts == null || accounts.isEmpty()) {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information");
-            alert.setHeaderText("Header section");
+            alert.setHeaderText("Error");
             alert.setContentText("No account");
             alert.showAndWait();
         } else {
             setTableData(accounts);
         }
+    }
+    
+    @FXML
+    void advancedAccount(ActionEvent event) {
+        System.out.println("Clicked");
+       
+        String email = emailField.getText();
+
+        List<Accountmodel> accounts = readByEmailContains(email);
+
+        if (accounts == null || accounts.isEmpty()) {
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Error");
+            alert.setContentText("No account");
+            alert.showAndWait();
+        } else {
+            setTableData(accounts);
+        }
+
     }
 
     @FXML

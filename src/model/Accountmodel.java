@@ -30,7 +30,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Accountmodel.findByIsmember", query = "SELECT a FROM Accountmodel a WHERE a.ismember = :ismember")
     , @NamedQuery(name = "Accountmodel.findByNameAndEmail", query = "SELECT a FROM Accountmodel a WHERE a.accountname = :accountname "
             + "and a.accountemail = :accountemail")
-    , @NamedQuery(name= "Accountmodel.findByAccountEmailContaining", query = "SELECT a FROM Accountmodel a WHERE a.accountemail LIKE CONCAT('%', :word, '%')")}) //with help from https://stackoverflow.com/questions/44373846/using-select-query-with-like-operator-and-parameters-in-java
+    , @NamedQuery(name= "Accountmodel.findByAccountEmailContaining", query = "SELECT a FROM Accountmodel a WHERE a.accountemail LIKE CONCAT('%', :word, '%')") //with help from https://stackoverflow.com/questions/44373846/using-select-query-with-like-operator-and-parameters-in-java
+    })
+
 public class Accountmodel implements Serializable {
 
     private static final long serialVersionUID = 1L;

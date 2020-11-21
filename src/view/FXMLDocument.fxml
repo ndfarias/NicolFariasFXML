@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="246.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController"> 
+<AnchorPane id="AnchorPane" prefHeight="658.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLDocumentController"> 
     <children>
         <Button fx:id="button" layoutX="183.0" layoutY="126.0" onAction="#handleButtonAction" text="Click Me!" />
         <Label layoutX="41.0" layoutY="319.0" minHeight="16" minWidth="69" text="By Email:" />
@@ -19,7 +19,7 @@
       <Button fx:id="buttonDeleteAccount" layoutX="308.0" layoutY="193.0" mnemonicParsing="false" onAction="#deleteAccount" text="Delete Account" />
       <Button fx:id="buttonNameAndEmail" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" onAction="#readByNameAndEmail" text="Find by Name and Email" />
       <Button fx:id="buttonReadEmail" layoutX="250.0" layoutY="84.0" mnemonicParsing="false" onAction="#readByEmailContaining" text="Find by Email Containing" />
-      <TableView fx:id="accountModel" layoutX="-1.0" layoutY="374.0" prefHeight="284.0" prefWidth="453.0">
+      <TableView fx:id="accountModel" layoutX="-1.0" layoutY="383.0" prefHeight="275.0" prefWidth="483.0">
         <columns>
           <TableColumn fx:id="accountid" prefWidth="116.0" text="Account ID" />
           <TableColumn fx:id="accountname" prefWidth="123.0" text="Account Name" />
@@ -34,6 +34,7 @@
          </font>
       </Label>
       <TextField fx:id="emailField" layoutX="130.0" layoutY="314.0" />
-      <Button fx:id="searchButton" layoutX="337.0" layoutY="314.0" mnemonicParsing="false" onAction="#searchStudent" text="Search" />
+      <Button fx:id="searchButton" layoutX="337.0" layoutY="299.0" mnemonicParsing="false" onAction="#searchAccount" text="Search" />
+      <Button fx:id="advancedButton" layoutX="335.0" layoutY="340.0" mnemonicParsing="false" onAction="#advancedAccount" text="Advanced Search" />
     </children>
 </AnchorPane>
