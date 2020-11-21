@@ -11,6 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -64,6 +67,28 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Button buttonNameAndEmail;
+    
+    @FXML
+    private TableView<?> accountModel;
+
+    @FXML
+    private TableColumn<?, ?> accountid;
+
+    @FXML
+    private TableColumn<?, ?> accountname;
+
+    @FXML
+    private TableColumn<?, ?> accountemail;
+
+    @FXML
+    private TableColumn<?, ?> ismember;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private Button searchButton;
+
     
     
     // The following code has been copied and modified from the demo project
@@ -274,4 +299,11 @@ public class FXMLDocumentController implements Initializable {
         }
         return accounts;     
     }
+    
+    @FXML
+    void searchStudent(ActionEvent event) {
+        
+        System.out.println("Clicked");
+
+        }
 }
