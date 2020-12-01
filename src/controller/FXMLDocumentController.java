@@ -58,9 +58,9 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // loading data from database
         manager = (EntityManager) Persistence.createEntityManagerFactory("NicolFariasFXMLPU").createEntityManager();
-
-        accountname.setCellValueFactory(new PropertyValueFactory<>("accountname"));
+        
         accountid.setCellValueFactory(new PropertyValueFactory<>("accountid"));
+        accountname.setCellValueFactory(new PropertyValueFactory<>("accountname"));
         accountemail.setCellValueFactory(new PropertyValueFactory<>("accountemail"));
         ismember.setCellValueFactory(new PropertyValueFactory<>("ismember"));
 
@@ -127,14 +127,13 @@ public class FXMLDocumentController implements Initializable {
 
         System.out.println("Enter Account ID:");
         int accountId = scn.nextInt();
+        scn.nextLine();
 
         System.out.println("Enter Account Name:");
         String accountName = scn.nextLine();
-        scn.next();
 
         System.out.println("Enter Account Email:");
         String accountEmail = scn.next();
-        scn.next();
 
         System.out.println("Enter Whether or not the Account is a Member:");
         Boolean isMember = scn.nextBoolean();
